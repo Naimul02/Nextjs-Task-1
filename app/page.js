@@ -1,10 +1,21 @@
+
+'use client'
+
+
+
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+
 
 export default function FormWithValidation() {
 
 
-  const {register } = useForm()
+  const {register  , formState : {errors} , handleSubmit} = useForm();
+
+
+  const onSubmit = (data) => {
+    console.log("data" , data)
+  }
   return (
     <main>
       {/* form */}
@@ -13,26 +24,29 @@ export default function FormWithValidation() {
       <div className="text-center heebo">
         <h2 className="text-2xl font-bold mt-8 text-[#006589]">Form</h2>
       </div>
-      <div className="hero  min-h-screen">
+      <div className="hero   min-h-screen">
         <div className="hero-content">
-          <div className="card  bg-white   shadow-lg rounded-lg ">
-            <form className="card-body lg:w-[700px]">
+          <div className="card border  bg-white   shadow-lg rounded-lg ">
+            <form className="card-body lg:w-[700px]"onSubmit={handleSubmit(onSubmit)}>
               {/* personal information */}
               <div className="flex gap-16 flex-col lg:flex-row items-center bg-white rounded-lg py-5 px-4">
                 <div className="form-control w-full ">
-                  <label className="label">
+                  <label className="label block" >
                     <span className="text-base font-semibold text-[#005689]">
                       Full Name <span className="text-lg text-red-600"> *</span>
                     </span>
                   </label>
                   <input
                     type="text"
-                    {...register('fullName' , {required : true})}
+                    {...register('fullName' , {required : 'Your full name is required'} )}
                     
                     placeholder="enter your full name"
                     
                     className="border-b-2  border-[#005689] focus:border-b-2 focus:border-[#7baac5] outline-none"
                   />
+                  {
+                    errors?.fullName && <p className="text-red-600 text-sm mt-1">{errors?.fullName?.message}</p>
+                  }
                 </div>
                 <div className="form-control w-full">
                   <label className="label">
@@ -109,7 +123,48 @@ export default function FormWithValidation() {
                 </div>
 
               {/* Account Setup */}
-              
+              <div className="form-control w-full">
+                  <label className="label">
+                    <span className="text-base font-semibold text-[#005689]">
+                     User Name <span className="text-lg text-red-600"> *</span>
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    {...register('userName' ,{required : true , minLength : 4})}
+                    placeholder="user name"
+                    className="border-b-2  border-[#005689] focus:border-b-2 focus:border-[#7baac5] outline-none"
+                    
+                  />
+                </div>
+              <div className="form-control w-full">
+                  <label className="label">
+                    <span className="text-base font-semibold text-[#005689]">
+                     Password <span className="text-lg text-red-600"> *</span>
+                    </span>
+                  </label>
+                  <input
+                    type="password"
+                    {...register('password' ,{required : true , minLength : 6})}
+                    placeholder="password"
+                    className="border-b-2  border-[#005689] focus:border-b-2 focus:border-[#7baac5] outline-none"
+                    
+                  />
+                </div>
+              <div className="form-control w-full">
+                  <label className="label">
+                    <span className="text-base font-semibold text-[#005689]">
+                     Confirm Password <span className="text-lg text-red-600"> *</span>
+                    </span>
+                  </label>
+                  <input
+                    type="password"
+                    {...register('confirmPassword' ,{required : true , minLength : 6})}
+                    placeholder="confirm password"
+                    className="border-b-2  border-[#005689] focus:border-b-2 focus:border-[#7baac5] outline-none"
+                    
+                  />
+                </div>
 
               
 
@@ -121,7 +176,7 @@ export default function FormWithValidation() {
                 <button
                   className={`bg-[#006589] hover:bg-[#1c3eaf] w-full py-3 text-white rounded-md cursor-pointer`}
                   type="submit"
-                  disabled={isSubmitDisabled} // Disable button based on word count
+                  
                 >
                   Submit
                 </button>
