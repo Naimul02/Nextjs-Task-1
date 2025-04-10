@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       >
 
         <nav>
-          <h2 className="text-xl font-semibold">Navbar</h2>
+          <h2 className="text-xl font-semibold text-center">Navbar</h2>
         </nav>
         {children}
       </body>
