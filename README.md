@@ -2,10 +2,10 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/your-project-name.git
+git clone https://github.com/Naimul02/Nextjs-Task-1.git
 
 # 2. Go to the project directory
-cd your-project-name
+cd Nextjs-Task-1
 
 # 3. Install dependencies
 npm install
