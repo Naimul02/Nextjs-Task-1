@@ -7,7 +7,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 
@@ -18,9 +18,29 @@ export default function FormWithValidation() {
 
   const [formData , setFormData] = useState(null);
   console.log('FormData : ' , formData);
+
+  
   
 
   
+  // const [darkMode , setDarkMode] = useState();
+  // const [theme ,setTheme] = useState();
+  
+  // console.log(darkMode , theme)
+
+  // useEffect(() => {
+  //     if(darkMode){
+          
+  //         localStorage.setItem('theme' , 'dark')
+  //         setTheme(localStorage.getItem('theme'))
+  //     }
+  //     else{
+        
+  //       localStorage.setItem('theme' , 'white')
+  //       setTheme(localStorage.getItem('theme'))
+  //     }
+  // } , [darkMode])
+
 
 
   const onSubmit = (data) => {
@@ -34,22 +54,24 @@ export default function FormWithValidation() {
 
   
   return (
-    <main>
 
-    <div>
-        <h2>{formData?.fullName}</h2>
-    </div>
+    <main className="max-w-[720px] mx-auto">
 
 
       {/* form */}
 
-      <div className="my-5">
-      <div className="text-center heebo">
-        <h2 className="text-2xl font-bold mt-8 text-[#006589]">Form</h2>
+      <div className="py-5">
+      <div className="">
+        <h2 className="text-xl text-center font-bold mt-8 mb-3 text-[#006589]">Multi step Form with validation</h2>
       </div>
-      <div className="hero   min-h-screen">
-        <div className="hero-content">
-          <div className="card border  bg-white shadow-lg rounded-lg">
+      
+      <div className="">
+        
+      
+        <div className="">
+          
+          <div className="card border     shadow-lg rounded-lg">
+            
             <form className="card-body lg:w-[700px] min-h-[320px] relative"onSubmit={handleSubmit(onSubmit)} >
               {/* personal information */}
          
@@ -84,7 +106,7 @@ export default function FormWithValidation() {
                         message : 'Please enter a valid format email address'
                     } })}
                     placeholder="enter your email"
-                    className="border-b-2  borde w-fullr-[#005689] focus:border-b-2 focus:border-[#7baac5] outline-none w-full"
+                    className="border-b-2  border-[#005689] focus:border-b-2 focus:border-[#7baac5] outline-none w-full"
                     
                   />
                   {
@@ -116,7 +138,7 @@ export default function FormWithValidation() {
 
 
                 
-          <div className="form-control  bg-white rounded-lg absolute right-4 bottom-4">
+          <div className="form-control  rounded-lg absolute right-4 bottom-4">
                 <button
                   className={`bg-[#006589] hover:bg-[#466875] max-w-[320px] px-4 py-2  text-white rounded-md cursor-pointer`}
                   type="submit"
@@ -130,6 +152,12 @@ export default function FormWithValidation() {
         </div>
       </div>
     </div>
+
+    {/* <footer className={`${theme === 'dark' ? 'border-t border-white' : theme === 'white' ? 'bg-base-300 text black' : ''} footer sm:footer-horizontal footer-center   p-4`}>
+  <aside>
+    <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+  </aside>
+</footer> */}
     </main>
   );
 }

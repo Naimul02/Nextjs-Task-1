@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function ThirdStep() {
@@ -51,18 +52,19 @@ export default function ThirdStep() {
 
     }
     setSubmitedData(firstSecondAndThirdStepData);
+    toast.success('Your form has been submitted successfully.')
     
   }
 
 
   return (
-    <div>
+    <div className=''>
         
-
-        <div className="hero flex flex-col lg:flex-row gap-2 items-center  justify-center  min-h-screen">
+    <div className='max-w-6xl mx-auto my-5 flex items-center  lg:my-16 '>
+        <div className="flex flex-col lg:flex-row w-full  gap-3">
         <div className="">
-          <div className="card border  bg-white   shadow-lg rounded-lg ">
-            <form className="card-body lg:w-[700px] min-h-[300px]  relative"onSubmit={handleSubmit(onSubmit)} >
+          <div className="card border w-full lg:w-[700px]    shadow-lg rounded-lg ">
+            <form className="card-body w-full  lg:w-[700px] min-h-[300px]  relative"onSubmit={handleSubmit(onSubmit)} >
         {/* Account Setup */}
         <div className="form-control w-full">
                   <label className="label block mb-1">
@@ -151,9 +153,9 @@ export default function ThirdStep() {
               </div>
               </div>
 
-              <div>
+              <div className='w-full'>
                     {
-                      watch('userName') &&         <div className="card border lg:w-96 bg-base-100 shadow-sm">
+                      watch('userName') &&         <div className="card border lg:w-96  shadow-sm">
                       <div className="card-body">
                         <span className="badge badge-lg  badge-warning">Live Preview</span>
                         
@@ -201,10 +203,11 @@ export default function ThirdStep() {
                     </div>
                     }
                 </div>     
+                </div>
               </div> 
 
               
-              
+              <Toaster />    
     </div>
   )
 }

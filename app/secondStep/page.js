@@ -32,12 +32,12 @@ const onSubmit = (data) => {
 
   }
   return (
-    <div className='max-w-5xl mx-auto'>
+    <div className='max-w-[720px] mx-auto'>
 
 
-<div className="hero   min-h-screen">
-        <div className="hero-content">
-          <div className="card border  bg-white   shadow-lg rounded-lg relative">
+<div className="my-5 lg:my-16 w-full ">
+        <div className="  lg:w-[720px]">
+          <div className="card border   shadow-lg rounded-lg relative w-full">
             <form className="card-body lg:w-[700px] min-h-[320px] "onSubmit={handleSubmit(onSubmit)} >
         {/* Address Details */}
               <div className="form-control w-full">
